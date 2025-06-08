@@ -1,0 +1,51 @@
+﻿@page "/serverlogs"
+@using Microsoft.AspNetCore.SignalR.Client
+@using SignalT.Server.Host.Features.ServerLogs
+@inject NavigationManager NavigationManager
+@inject IServerLogsService _ServerLogsService
+<PageTitle>Server logs</PageTitle>
+
+<h1>Server logs</h1>
+
+
+@foreach (var item in items)
+{
+    @item<br/>
+}
+
+
+@code {
+   
+
+    private HubConnection? _hubConnection;
+    private List<string> items = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (items.Count < 1)
+        {
+            items = _ServerLogsService.Get();
+        }
+        
+        _hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavigationManager.ToAbsoluteUri("/listhub"))
+            .WithAutomaticReconnect()
+            .Build();
+
+        _hubConnection.On<string>("NewItemAdded", (newItem) =>
+        {
+            items.Add(newItem);
+            InvokeAsync(StateHasChanged); // Uppdatera UI
+        });
+
+        await _hubConnection.StartAsync();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_hubConnection is not null)
+        {
+            await _hubConnection.DisposeAsync();
+        }
+    }
+}
