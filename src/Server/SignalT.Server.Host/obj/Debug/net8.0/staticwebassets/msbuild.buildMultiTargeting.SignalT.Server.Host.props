@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SignalT.Server.Host.props" />
+</Project>

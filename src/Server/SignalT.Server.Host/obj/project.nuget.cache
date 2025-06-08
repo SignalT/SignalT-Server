@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "1VfhW6CJIoI=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\DanielBerg\\source\\repos\\SignalT\\SignalT-Server\\src\\Server\\SignalT.Server.Host\\SignalT.Server.Host.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\DanielBerg\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.21.0\\microsoft.visualstudio.azure.containers.tools.targets.1.21.0.nupkg.sha512",
+    "C:\\Users\\DanielBerg\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.435\\stylecop.analyzers.1.2.0-beta.435.nupkg.sha512",
+    "C:\\Users\\DanielBerg\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.435\\stylecop.analyzers.unstable.1.2.0.435.nupkg.sha512"
+  ],
+  "logs": []
+}
