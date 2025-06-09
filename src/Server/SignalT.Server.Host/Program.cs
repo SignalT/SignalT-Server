@@ -17,6 +17,12 @@ public class Program
 
         builder.Services.AddHostedService<YourBackgroundService>();
         builder.Services.AddSingleton<IServerLogsService, ServerLogsService>();
+
+        builder.Services.AddControllers();
+
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+        builder.Services.AddServer(builder.Configuration);
         var app = builder.Build();
         app.MapHub<ListHub>("/listhub");
 
@@ -29,6 +35,8 @@ public class Program
             app.UseHsts();
         }
 
+        app.UseSwagger();
+        app.UseSwaggerUI();
         app.UseHttpsRedirection();
 
         app.UseStaticFiles();
@@ -37,7 +45,7 @@ public class Program
 
         app.MapBlazorHub();
         app.MapFallbackToPage("/_Host");
-
+        app.MapControllers();
         app.Run();
     }
 }

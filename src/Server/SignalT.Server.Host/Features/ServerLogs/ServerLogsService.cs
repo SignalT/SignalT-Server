@@ -15,8 +15,9 @@ public class ServerLogsService : IServerLogsService
 
     public async Task Add(string item)
     {
+        var s = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss ") + item;
         _logs.Add(item);
-        await _hub.Clients.All.SendAsync("NewItemAdded", item);
+        await _hub.Clients.All.SendAsync("NewItemAdded", s);
     }
 
     public List<string> Get()

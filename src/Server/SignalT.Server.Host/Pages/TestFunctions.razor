@@ -1,0 +1,19 @@
+@page "/testfunctions"
+@using SignalT.Server.Host.Features.ServerLogs
+@inject IServerLogsService ServerLogs
+<PageTitle>Test functions</PageTitle>
+
+<h1>Test functions</h1>
+<p role="status">@currentStatus</p>
+<button class="btn btn-primary" @onclick="SendPosition">Send position</button>
+
+@code {
+    private string currentStatus = string.Empty;
+
+    private void SendPosition()
+    {
+        currentStatus = "Position sent";
+        //call the position update api and remove serverlog below
+        ServerLogs.Add(DateTime.UtcNow.ToString("yyyy-MM-dd hh:mm:ss")+" Position Sent");
+    }
+}
