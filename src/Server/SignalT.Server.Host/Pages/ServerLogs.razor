@@ -19,14 +19,9 @@
 
     private HubConnection? _hubConnection;
     private List<string> items = new();
-
+   
     protected override async Task OnInitializedAsync()
     {
-        if (items.Count < 1)
-        {
-            items = _ServerLogsService.Get();
-        }
-        
         _hubConnection = new HubConnectionBuilder()
             .WithUrl(NavigationManager.ToAbsoluteUri("/listhub"))
             .WithAutomaticReconnect()

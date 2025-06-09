@@ -14,6 +14,7 @@ public class Program
         builder.Services.AddRazorPages();
         builder.Services.AddServerSideBlazor();
         builder.Services.AddSignalR();
+
         builder.Services.AddHostedService<YourBackgroundService>();
         builder.Services.AddSingleton<IServerLogsService, ServerLogsService>();
         var app = builder.Build();

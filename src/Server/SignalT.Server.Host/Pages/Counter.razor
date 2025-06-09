@@ -1,5 +1,6 @@
 ﻿@page "/counter"
-
+@using SignalT.Server.Host.Features.ServerLogs
+@inject IServerLogsService ServerLogs
 <PageTitle>Counter</PageTitle>
 
 <h1>Counter</h1>
@@ -14,5 +15,6 @@
     private void IncrementCount()
     {
         currentCount++;
+        ServerLogs.Add(DateTime.UtcNow.ToString("yyyy-MM-dd hh:mm:ss")+" New Row");
     }
 }

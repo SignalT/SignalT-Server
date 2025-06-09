@@ -16,7 +16,7 @@ public class YourBackgroundService : BackgroundService
     {
         while (!stoppingToken.IsCancellationRequested)
         {
-            var newItem = "Ny rad " + DateTime.Now;
+            var newItem = DateTime.UtcNow.ToString("yyyy-MM-dd hh:mm:ss") + " New Row";
 
             // Lägg till i din lista
             // YourSharedList.Instance.Add(newItem);
